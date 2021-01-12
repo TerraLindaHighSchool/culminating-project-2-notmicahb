@@ -6,10 +6,10 @@ public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
     private float minSpeed = 10; 
-    private float maxSpeed = 16;
+    private float maxSpeed = 14;
     private float maxTorque = 10; 
     private float xRange = 4;
-    private float ySpawnPos = -6;
+    private float ySpawnPos = 0;
     private GameManager gameManager;
     public int pointValue;
     public ParticleSystem explosionParticle;
@@ -47,11 +47,11 @@ public class Target : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-        if(!gameObject.CompareTag("Bad"))
-        {
-            gameManager.GameOver();
-        }
+            Destroy(gameObject);
+            if (!gameObject.CompareTag("Bad"))
+            {
+                gameManager.GameOver();
+            }
     }
     // Update is called once per frame
     void Update()

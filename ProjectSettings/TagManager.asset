@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bad
+  - Die
+  - Yes
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Good
+  - Bad
   - 
   - 
   - 
