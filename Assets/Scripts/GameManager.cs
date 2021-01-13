@@ -11,10 +11,13 @@ public class GameManager : MonoBehaviour
     public List<GameObject> targets;
     private float spawnRate = 1.0f;
     private int score;
+    private int winScore;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI winText;
     public Button restartButton;
     public GameObject titleScreen;
+    private float setDifficulty = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +42,29 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+        if (score >= 25 * setDifficulty)
+        {
+            winByScore();
+        }
+        if (score <= -1)
+        {
+            GameOver();
+        }
+    }
+    public void winByScore()
+    {        
+        winText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        isGameActive = false;
     }
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-        isGameActive = false;        
+        if(isGameActive == true)
+        {
+            gameOverText.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            isGameActive = false;
+        }
     }
     public void RestartGame()
     {
@@ -59,4 +79,9 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
         titleScreen.gameObject.SetActive(false);
     }
+    public void TheDifficulty(int difficulty)
+    {
+        setDifficulty *= difficulty;
+    }
 }
+
